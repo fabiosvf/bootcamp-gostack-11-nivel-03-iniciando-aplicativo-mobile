@@ -60,6 +60,233 @@ import App from './src/App'
 .prettierrc.js
 App.tsx
 ```
+
+### Configurando padrões de projeto com ESLint, Prettier e EditorConfig
+
+#### Configurando o EditorConfig
+- Instale a extensão `EditorConfig for VS Code` no Visual Studio Code
+- Crie o arquivo `.editorconfig` na raiz do projeto com o seguinte conteúdo:
+```
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+end_of_line = lf
+```
+#### Configurando o ESLint
+- Instale a extensão `ESLint` no Visual Studio Code
+- Abra o arquivo `settings.json` pressionando `CTRL + P` e digitando o nome do arquivo.
+- Adicione o trecho abaixo no final do arquivo:
+```
+"editor.codeActionsOnSave": {
+  "source.fixAll.eslint": true
+}
+```
+- Além de excluir o arquivo `.eslintrc.js`, realize também a desinstalação da versão do `eslint` que veio junto com o template do projeto. Para isso digite
+```
+$ yarn remove eslint @react-native-community/eslint-config
+```
+- Instale a biblioteca `eslint` como dependência de desenvolvimento:
+```
+$ yarn add eslint -D
+```
+- Inicie o assistente de configuração do ESLint digitando o seguinte comando:
+```
+$ yarn eslint --init
+```
+- Responda as perguntas com as seguintes informações:
+  - How would you like to use ESLint? `To check syntax, find problems, and enforce code style`
+  - What type of module does your project use? `JavaScrtipt modules (import/export)`
+  - Which framework does your project use? `React`
+  - Does your project use TypeScript? `Yes`
+  - Where does your code run? `Pressione Espaço para desmarcar a opção`
+  - How would you like to define a style for your project? `Use a popular style guide`
+  - Which style guide do you want to foloow? `Airbnb: https://github.com/airbnb/javascript`
+  - What format do you want your config file to be in? `JSON`
+  - Would you like to install them now with npm? `No`
+- Copie as linhas de comando sugeridas pelo assistente para realizar a instalação das bibliotecas de forma manual
+  - No meu caso, as bibliocas sugeridas para instalação foram:
+```
+eslint-plugin-react@^7.21.5 @typescript-eslint/eslint-plugin@latest eslint-config-airbnb@latest eslint@^5.16.0 || ^6.8.0 || ^7.2.0 eslint-plugin-import@^2.22.1 eslint-plugin-jsx-a11y@^6.4.1 eslint-plugin-react-hooks@^4 || ^3 || ^2.3.0 || ^1.7.0 @typescript-eslint/parser@latest
+```
+- Remova, da sugestão de instalação, a referência completa à instalação da biblioteca `eslint`. No meu caso são essas versões:
+```
+eslint@^5.16.0 || ^6.8.0 || ^7.2.0
+```
+- Remova, da sugestão de instalação, a referência à versões anteriores para a biblioteca `eslint-plugin-react-hooks` e mantenha apenas a versão mais atual
+```
+De
+eslint-plugin-react-hooks@^4 || ^3 || ^2.3.0 || ^1.7.0
+Para
+eslint-plugin-react-hooks@^4
+```
+- Instale as bibliotecas manualmente
+```
+yarn add -D eslint-plugin-react@^7.21.5 @typescript-eslint/eslint-plugin@latest eslint-config-airbnb@latest eslint-plugin-import@^2.22.1 eslint-plugin-jsx-a11y@^6.4.1 eslint-plugin-react-hooks@^4 @typescript-eslint/parser@latest
+```
+- Crie o arquivo `.eslintignore` na raiz do projeto com o seguinte conteúdo:
+```
+**/*.js
+node_modules
+build
+android
+ios
+```
+- Na raiz do projeto, localize o arquivo `.eslintrc.json` e dentro da sessão `extends` adicione o seguinte trecho de código:
+```
+"plugin:@typescript-eslint/recommended"
+```
+- Adicione uma nova sessão chamada `globals` com o seguinte código
+```
+"globals": {
+      "__DEV__": "readonly"
+    }
+```
+- Ainda no arquivo `.eslintrc.json` adicione o seguinte código dentro da sessão `plugins`:
+```
+"react-hooks"
+```
+- Para finalizar o ajuste no arquivo `.eslintrc.json` adicione o código abaixo dentro da sessão `rules`:
+```
+"react-hooks/rules-of-hooks": "error",
+"react-hooks/exhaustive-deps": "warn",
+"react/jsx-filename-extension": [
+	1,
+	{
+	"extensions": [
+		".tsx"
+	]
+	}
+],
+"no-use-before-define": "off",
+"@typescript-eslint/no-use-before-define": [
+	"error"
+],
+"react/react-in-jsx-scope": "off"
+```
+- Instale a biblioteca `eslint-import-resolver-typescript` como dependência de desenvolvimento:
+```
+$ yarn add eslint-import-resolver-typescript -D
+```
+- Abra novamente o arquivo de configuração `.eslintrc.json` e adicione o seguinte código na sessão `rules`:
+```
+"import/extensions": [
+    "error",
+    "ignorePackages",
+    {
+      "ts": "never",
+      "tsx": "never"
+    }
+ ]
+```
+- Ainda no arquivo `.eslintrc.json`, logo abaixo da sessão `rules` adicione uma nova sessão chamada `settings` com o seguinte código:
+```
+"settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
+```
+
+#### Configurando o Prettier
+- Desinstale a extensão `Prettier - Code Formatter` caso a mesma esteja instalada
+- Instale as seguintes bibliotecas como dependências de desenvolvimento:
+```
+$ yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
+```
+- Na sessão `extends` do arquivo de configuração `.eslintrc.json` adicione o seguinte código:
+```
+"prettier/@typescript-eslint",
+"plugin:prettier/recommended"
+```
+- Na sessão `plugins` adicione
+```
+"prettier"
+```
+- Ainda no mesmo arquivo de configuração adicione o seguinte código na sessão `rules`:
+```
+"prettier/prettier": "error"
+```
+- O código final do arquivo `.eslintrc.json` deverá ficar parecido com o conteúdo abaixo:
+```json
+{
+    "env": {
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb",
+        "plugin:@typescript-eslint/recommended",
+        "prettier/@typescript-eslint",
+        "plugin:prettier/recommended"
+    ],
+    "globals": {
+      "__DEV__": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "react-hooks",
+        "@typescript-eslint",
+        "prettier"
+    ],
+    "rules": {
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "react/jsx-filename-extension": [
+        1,
+        {
+        "extensions": [
+          ".tsx"
+        ]
+        }
+      ],
+      "import/extensions": [
+        "error",
+        "ignorePackages",
+        {
+          "ts": "never",
+          "tsx": "never"
+        }
+     ],
+      "no-use-before-define": "off",
+      "@typescript-eslint/no-use-before-define": [
+        "error"
+      ],
+      "react/react-in-jsx-scope": "off",
+      "prettier/prettier": "error"
+    },
+    "settings": {
+      "import/resolver": {
+        "typescript": {}
+      }
+    }
+}
+```
+- Crie o arquivo `prettier.config.js` na raiz do projeto e adicione o seguinte código:
+```
+module.exports = {
+  singleQuote: true,
+  trailingComma: 'all',
+	arrowParens: 'avoid',
+}
+```
+- Crie ou edite o arquivo `.eslintignore` na raiz do projeto e adicione a seguinte regra:
+```
+/*.js
+```
+
 ---
 ## Padrões de Projeto
 
