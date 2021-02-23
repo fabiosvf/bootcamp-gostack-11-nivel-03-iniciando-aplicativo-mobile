@@ -318,6 +318,31 @@ import 'react-native-gesture-handler';
 ```
 $ yarn add @react-navigation/stack
 ```
+#### Importando fontes externas
+- Acesse o site [Google Fonts](https://fonts.google.com/), localize a fonte `Roboto Slab`, selecione os estilos `Regular 400` e `Medium 500`, em seguida, na lateral inferior direita, clique no botão `Download all`
+- Crie a seguinte estrutura de pastas na raiz do projeto
+```
+assets/fonts/
+```
+- Copie, para dentro desta pasta, os arquivos `RobotoSlab-Regular.ttf` e `RobotoSlab-Medium.ttf` obtidos a partir do download das fontes do Google
+- Crie o arquivo `react-native.config.js` na raiz do projeto e defina a seguinte parametrização
+```js
+module.exports = {
+  project: {
+    ios: {},
+    android: {},
+  },
+  assets: [
+    './assets/fonts/'
+  ],
+};
+```
+- Em seguinte digite a seguinte linha de comando:
+```
+$ npx react-native link
+ou
+$ yarn react-native link
+```
 ---
 ## Padrões de Projeto
 
