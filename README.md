@@ -286,7 +286,38 @@ module.exports = {
 ```
 /*.js
 ```
-
+### Estrutura e padrões
+#### Configurando navegação
+- Instale a biblioteca `styled-components`
+```
+$ yarn add styled-components
+```
+- Instale a biblioteca `@types/styled-components` como dependência de desenvolvimento
+```
+$ yarn add @types/styled-components -D
+```
+- Observação, devido à inconsistências na configuração do arquivo `.eslintrc.json` foi feito o seguinte ajuste:
+  - Removido as opções `"prettier/@typescript-eslint"`, `"prettier"` e `"prettier/react"` da sessão `extends`
+  - Mantido as opções `"plugin:@typescript-eslint/recommended"` e `"plugin:prettier/recommended"` que possuem a mesma função das opções anteriores, mas de forma atualizada
+- Acesse a página [React Navigation](https://reactnavigation.org/)
+  - Clique na opção `Read docs` no centro da tela
+  - Em seguida, na sessão `Installation` clique na opção `Yarn`
+  - Siga todas as orientações de instalação na tela
+  - Abaixo seguem os comandos aplicados:
+  ```
+  $ yarn add @react-navigation/native
+  ```
+  ```
+  $ yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+  ```
+- Insira o seguinte código no início do arquivo `src/App.tsx`
+```ts
+import 'react-native-gesture-handler';
+```
+- Ainda na página de documentação do `React Navigation`, clique no link no final da página chamado `Hello React Navigation`, clique em `Yarn` e instale a seguinte biblioteca
+```
+$ yarn add @react-navigation/stack
+```
 ---
 ## Padrões de Projeto
 
@@ -303,8 +334,16 @@ module.exports = {
 ## Tecnologias utilizadas
 
 #### Dependências de Projeto
+- [@react-native-community/masked-view](https://yarnpkg.com/package/@react-native-community/masked-view)
+- [@react-navigation/native](https://yarnpkg.com/package/@react-navigation/native)
+- [@react-navigation/stack](https://yarnpkg.com/package/@react-navigation/stack)
 - [react](https://yarnpkg.com/package/react)
 - [react-native](https://yarnpkg.com/package/react-native)
+- [react-native-gesture-handler](https://yarnpkg.com/package/react-native-gesture-handler)
+- [react-native-reanimated](https://yarnpkg.com/package/react-native-reanimated)
+- [react-native-safe-area-context](https://yarnpkg.com/package/react-native-safe-area-context)
+- [react-native-screens](https://yarnpkg.com/package/react-native-screens)
+- [styled-components](https://yarnpkg.com/package/styled-components)
 
 #### Dependências de Desenvolvimento
 - [@babel/core](https://yarnpkg.com/package/@babel/core)
@@ -312,6 +351,7 @@ module.exports = {
 - [@types/jest](https://yarnpkg.com/package/@types/jest)
 - [@types/react-native](https://yarnpkg.com/package/@types/react-native)
 - [@types/react-test-renderer](https://yarnpkg.com/package/@types/react-test-renderer)
+- [@types/styled-components](https://yarnpkg.com/package/@types/styled-components)
 - [@typescript-eslint/eslint-plugin](https://yarnpkg.com/package/@typescript-eslint/eslint-plugin)
 - [@typescript-eslint/parser](https://yarnpkg.com/package/@typescript-eslint/parser)
 - [babel-jest](https://yarnpkg.com/package/babel-jest)
