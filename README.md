@@ -390,6 +390,11 @@ apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 ```
 $ yarn add @types/react-native-vector-icons -D
 ```
+#### Tela de autenticação
+- Instale a biblioteca `react-native-iphone-x-helper`
+```
+$ yarn add react-native-iphone-x-helper
+```
 ---
 ## Padrões de Projeto
 
@@ -412,6 +417,7 @@ $ yarn add @types/react-native-vector-icons -D
 - [react](https://yarnpkg.com/package/react)
 - [react-native](https://yarnpkg.com/package/react-native)
 - [react-native-gesture-handler](https://yarnpkg.com/package/react-native-gesture-handler)
+- [react-native-iphone-x-helper](https://yarnpkg.com/package/react-native-iphone-x-helper)
 - [react-native-reanimated](https://yarnpkg.com/package/react-native-reanimated)
 - [react-native-safe-area-context](https://yarnpkg.com/package/react-native-safe-area-context)
 - [react-native-screens](https://yarnpkg.com/package/react-native-screens)
