@@ -343,6 +343,53 @@ $ npx react-native link
 ou
 $ yarn react-native link
 ```
+- Após executar o comando acima, confira se as fontes foram incorporadas ao código nativo `android` ou `ios`. Caso contrário, o processo deverá ser revisto.
+- Para o `android` localize os seguintes arquivos
+```
+android/app/src/main/assets/fonts/RobotoSlab-Medium.ttf
+android/app/src/main/assets/fonts/RobotoSlab-Regular.ttf
+```
+- Para o `ios` localize a referência às fontes `RobotoSlab-Regular.ttf` e `RobotoSlab-Medium.ttf` dentro dos seguintes arquivos
+```
+ios/appgobarber.xcodeproj/project.pbxproj
+ios/appgobarber/Info.plist
+```
+### Autenticação e cadastro
+#### Input & Button
+- Abra o arquivo `.eslintrc.json` e inclua as seguintes regras dentro da sessão `rules`
+  - A regra `import/prefer-default-export` obriga definir o parâmetro `default` ao exportar um módulo. Como estamos trabalhando com `styled-components` e existe a necessidade de exportar vários módulos de estilização sem o parâmetro `default`, então a gente desliga essa regra
+  - A regra `react/prop-types` serve para obrigar a utilização de `propTypes`, mas como estamos utilizando o `typescript` que já faz todo o tratamento de tipagem, então a gente também desliga essa regra
+  - Por último, a regra `react/jsx-props-no-spreading` bloqueia a passagem de props via componentes. Então vamos desligar esse regra também, porque existe a necessidade de passar props via componente.
+```
+"import/prefer-default-export": "off",
+"react/prop-types": "off",
+"react/jsx-props-no-spreading": "off",
+```
+- Instale a biblioteca `@types/styled-components-react-native` como dependência de desenvolvimento
+```
+$ yarn add @types/styled-components-react-native -D
+```
+- Instale a biblioteca `react-native-vector-icons`
+```
+$ yarn add react-native-vector-icons
+```
+- Após a instalação dessa biblioteca, para o `ios` abra o arquivo `ios/appgobarber/Info.plist` e inclusa o seguinte código como uma string do array da key `UIAppFonts`
+```
+Feather.ttf
+```
+- Para o `android` abra o arquivo `android/app/build.gradle` e adiciona no final do arquivo a seguinte linha de código:
+```
+project.ext.vectoricons = [
+  iconFontNames: ["Feather.ttf"]
+];
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+```
+- Observação importante, no trecho de código `iconFontNames: ["Feather.ttf"]` garanta que seja utilizado aspas duplas para referenciar a fonte de ícones.
+- Maiores detalhes consulte o versionamento deste código
+- Instale a biblioteca `@types/react-native-vector-icons` como dependência de desenvolvimento
+```
+$ yarn add @types/react-native-vector-icons -D
+```
 ---
 ## Padrões de Projeto
 
@@ -368,6 +415,7 @@ $ yarn react-native link
 - [react-native-reanimated](https://yarnpkg.com/package/react-native-reanimated)
 - [react-native-safe-area-context](https://yarnpkg.com/package/react-native-safe-area-context)
 - [react-native-screens](https://yarnpkg.com/package/react-native-screens)
+- [react-native-vector-icons](https://yarnpkg.com/package/react-native-vector-icons)
 - [styled-components](https://yarnpkg.com/package/styled-components)
 
 #### Dependências de Desenvolvimento
@@ -375,8 +423,10 @@ $ yarn react-native link
 - [@babel/runtime](https://yarnpkg.com/package/@babel/runtime)
 - [@types/jest](https://yarnpkg.com/package/@types/jest)
 - [@types/react-native](https://yarnpkg.com/package/@types/react-native)
+- [@types/react-native-vector-icons](https://yarnpkg.com/package/@types/react-native-vector-icons)
 - [@types/react-test-renderer](https://yarnpkg.com/package/@types/react-test-renderer)
 - [@types/styled-components](https://yarnpkg.com/package/@types/styled-components)
+- [@types/styled-components-react-native](https://yarnpkg.com/package/@types/styled-components-react-native)
 - [@typescript-eslint/eslint-plugin](https://yarnpkg.com/package/@typescript-eslint/eslint-plugin)
 - [@typescript-eslint/parser](https://yarnpkg.com/package/@typescript-eslint/parser)
 - [babel-jest](https://yarnpkg.com/package/babel-jest)
