@@ -395,6 +395,12 @@ $ yarn add @types/react-native-vector-icons -D
 ```
 $ yarn add react-native-iphone-x-helper
 ```
+#### Integrando Unform
+- Instale as bibliotecas `@unform/core` e `@unform/mobile`
+```
+$ yarn add @unform/core @unform/mobile
+```
+- Observação: Devido a alguns conflitos entre o `react` versão `16.13.1` e o `unform`, tive que atualizar o react para a versão `17.0.1`
 ---
 ## Padrões de Projeto
 
@@ -414,6 +420,8 @@ $ yarn add react-native-iphone-x-helper
 - [@react-native-community/masked-view](https://yarnpkg.com/package/@react-native-community/masked-view)
 - [@react-navigation/native](https://yarnpkg.com/package/@react-navigation/native)
 - [@react-navigation/stack](https://yarnpkg.com/package/@react-navigation/stack)
+- [@unform/core](https://yarnpkg.com/package/@unform/core)
+- [@unform/mobile](https://yarnpkg.com/package/@unform/mobile)
 - [react](https://yarnpkg.com/package/react)
 - [react-native](https://yarnpkg.com/package/react-native)
 - [react-native-gesture-handler](https://yarnpkg.com/package/react-native-gesture-handler)
