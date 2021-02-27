@@ -410,6 +410,14 @@ $ yarn add yup
 ```
 $ yarn add @types/yup -D
 ```
+### Conectando com a API
+#### Cadastro na aplicação
+- Instale a biblioteca `axios`
+```
+$ yarn add axios
+```
+- Se estiver utilizando o emulador de `android` do Google, a propriedade `baseURL` deverá ser `http://10.0.2.2:3333`
+- Se estiver utilizando o emulador de `ios`, a propriedade `baseURL` deverá ser `http://localhost:3333`
 ---
 ## Padrões de Projeto
 
@@ -431,6 +439,7 @@ $ yarn add @types/yup -D
 - [@react-navigation/stack](https://yarnpkg.com/package/@react-navigation/stack)
 - [@unform/core](https://yarnpkg.com/package/@unform/core)
 - [@unform/mobile](https://yarnpkg.com/package/@unform/mobile)
+- [axios](https://yarnpkg.com/package/axios)
 - [react](https://yarnpkg.com/package/react)
 - [react-native](https://yarnpkg.com/package/react-native)
 - [react-native-gesture-handler](https://yarnpkg.com/package/react-native-gesture-handler)
