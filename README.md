@@ -401,6 +401,15 @@ $ yarn add react-native-iphone-x-helper
 $ yarn add @unform/core @unform/mobile
 ```
 - Observação: Devido a alguns conflitos entre o `react` versão `16.13.1` e o `unform`, tive que atualizar o react para a versão `17.0.1`
+#### Validação dos formulários
+- Instale a biblioteca `yup`
+```
+$ yarn add yup
+```
+- Instale a biblioteca `@types/yup` como dependência de desenvolvimento
+```
+$ yarn add @types/yup -D
+```
 ---
 ## Padrões de Projeto
 
@@ -431,6 +440,7 @@ $ yarn add @unform/core @unform/mobile
 - [react-native-screens](https://yarnpkg.com/package/react-native-screens)
 - [react-native-vector-icons](https://yarnpkg.com/package/react-native-vector-icons)
 - [styled-components](https://yarnpkg.com/package/styled-components)
+- [yup](https://yarnpkg.com/package/yup)
 
 #### Dependências de Desenvolvimento
 - [@babel/core](https://yarnpkg.com/package/@babel/core)
@@ -441,6 +451,7 @@ $ yarn add @unform/core @unform/mobile
 - [@types/react-test-renderer](https://yarnpkg.com/package/@types/react-test-renderer)
 - [@types/styled-components](https://yarnpkg.com/package/@types/styled-components)
 - [@types/styled-components-react-native](https://yarnpkg.com/package/@types/styled-components-react-native)
+- [@types/yup](https://yarnpkg.com/package/@types/yup)
 - [@typescript-eslint/eslint-plugin](https://yarnpkg.com/package/@typescript-eslint/eslint-plugin)
 - [@typescript-eslint/parser](https://yarnpkg.com/package/@typescript-eslint/parser)
 - [babel-jest](https://yarnpkg.com/package/babel-jest)
