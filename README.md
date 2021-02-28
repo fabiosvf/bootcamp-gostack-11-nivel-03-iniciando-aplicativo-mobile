@@ -4,6 +4,12 @@
 ## Sobre
 - Nesse módulo criaremos a versão mobile do GoBarber que será utilizada pelos usuários para agendar serviços dentro da plataforma.
 
+## Protótipo - GoBarber (App Mobile)
+
+|SignIn|SignUp|
+|-|-|
+|<img src="docs/SignIn.png" width="450px">|<img src="docs/SignUp.png" width="450px">|
+
 ---
 ## Roteiro
 
