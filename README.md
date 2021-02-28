@@ -418,6 +418,14 @@ $ yarn add axios
 ```
 - Se estiver utilizando o emulador de `android` do Google, a propriedade `baseURL` deverá ser `http://10.0.2.2:3333`
 - Se estiver utilizando o emulador de `ios`, a propriedade `baseURL` deverá ser `http://localhost:3333`
+#### Autenticação de usuários
+- Instale a biblioteca `@react-native-community/async-storage`
+```
+$ yarn add @react-native-community/async-storage
+```
+- Como essa biblioteca altera parte da estrutura do código nativo, então existem alguns comandos adicionais que precisam ser executados tanto para  o `ios` quanto para o `android`
+  - Se estiver executarndo em um `ios`, acesse a pasta `ios` na raiz da aplicação via terminal e digite `pod install`
+  - Se estiver executando em um `android`, digite `yarn android`
 ---
 ## Padrões de Projeto
 
@@ -434,6 +442,7 @@ $ yarn add axios
 ## Tecnologias utilizadas
 
 #### Dependências de Projeto
+- [@react-native-community/async-storage](https://yarnpkg.com/package/@react-native-community/async-storage)
 - [@react-native-community/masked-view](https://yarnpkg.com/package/@react-native-community/masked-view)
 - [@react-navigation/native](https://yarnpkg.com/package/@react-navigation/native)
 - [@react-navigation/stack](https://yarnpkg.com/package/@react-navigation/stack)
